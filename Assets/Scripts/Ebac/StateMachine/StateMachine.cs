@@ -3,44 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class StateMachine<T> where T : System.Enum
+
+namespace Ebac.StateMachine
 {
-    
-    public Dictionary<T, StateBase> dictionaryState;
-
-    public StateBase _currentState;
-    public float timeToStartGame = 1f;
-
-    
-    public StateBase CurrentState
+    public class StateMachine<T> where T : System.Enum
     {
-        get { return _currentState; }
-    }
+
+        public Dictionary<T, StateBase> dictionaryState;
+
+        public StateBase _currentState;
+        public float timeToStartGame = 1f;
 
 
-    public void Init()
-    {
-        dictionaryState = new Dictionary<T, StateBase>();
-    }
-
-    public void RegisterStates(T typeEnum, StateBase state)
-    {
-        dictionaryState.Add(typeEnum, state);
-    }
+        public StateBase CurrentState
+        {
+            get { return _currentState; }
+        }
 
 
-    public void SwitchState(T state)
-    {
-        if (_currentState != null) _currentState.OnStateExit();
+        public void Init()
+        {
+            dictionaryState = new Dictionary<T, StateBase>();
+        }
 
-        _currentState = dictionaryState[state];
+        public void RegisterStates(T typeEnum, StateBase state)
+        {
+            dictionaryState.Add(typeEnum, state);
+        }
 
-        _currentState.OnStateEnter();
-    }
 
-    public void Update()
-    {
-        if (_currentState != null) _currentState.OnStateStay();
+        public void SwitchState(T state)
+        {
+            if (_currentState != null) _currentState.OnStateExit();
 
+            _currentState = dictionaryState[state];
+
+            _currentState.OnStateEnter();
+        }
+
+        public void Update()
+        {
+            if (_currentState != null) _currentState.OnStateStay();
+
+        }
     }
 }
