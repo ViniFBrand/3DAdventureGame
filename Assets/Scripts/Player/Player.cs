@@ -14,4 +14,5 @@ public class Player : MonoBehaviour
         _currentState = newState;
         _currentState.OnStateEnter(this);
     }
+
 }

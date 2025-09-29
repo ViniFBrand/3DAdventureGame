@@ -12,10 +12,10 @@ public class PlayerRunState : PlayerState
 
     public override void HandleInput(Player player)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))    
         {
             player.ChangeState(new PlayerJumpState());
-        }
+        }   
     }
 
     public override void OnStateUpdate(Player player)
