@@ -28,8 +28,8 @@ public class PlayerStateMachine : Singleton<PlayerStateMachine>
 
         stateMachine.Init();
         stateMachine.RegisterStates(PlayerStates.IDLE, new PlayerIdleState());
-        stateMachine.RegisterStates(PlayerStates.RUN, new PlayerState());
-        stateMachine.RegisterStates(PlayerStates.JUMP, new PlayerState());
+        stateMachine.RegisterStates(PlayerStates.RUN, new PlayerRunState());
+        stateMachine.RegisterStates(PlayerStates.JUMP, new PlayerJumpState());
 
         stateMachine.SwitchState(PlayerStates.IDLE);
     }
