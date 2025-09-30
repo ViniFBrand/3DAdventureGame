@@ -16,7 +16,11 @@ public class Player : MonoBehaviour
 
     public KeyCode jumpKeyCode = KeyCode.Space;
 
-    #region EXERCISE
+    [Header("Run Setup")]
+    public KeyCode keyRun = KeyCode.LeftShift;
+    public float speedRun = 1.5f;
+
+    #region EXERCISE MODULO 28 
     public Rigidbody rb;
     private PlayerState _currentState;
 
@@ -47,6 +51,20 @@ public class Player : MonoBehaviour
 
         vSpeed -= gravity * Time.deltaTime;
         speedVector.y = vSpeed;
+
+        var isWalking = inputAxisVertical != 0;
+        if (isWalking)
+        {
+            if(Input.GetKey(keyRun))
+            {
+                speedVector *= speedRun;
+                animator.speed = speedRun;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
+        }
 
         characterController.Move(speedVector * Time.deltaTime);
 

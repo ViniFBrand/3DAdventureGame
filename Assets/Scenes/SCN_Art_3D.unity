@@ -10234,6 +10234,8 @@ MonoBehaviour:
   gravity: 20
   jumpSpeed: 15
   jumpKeyCode: 32
+  keyRun: 304
+  speedRun: 1.5
   rb: {fileID: 0}
 --- !u!4 &1885524013
 Transform:
