@@ -10232,7 +10232,7 @@ MonoBehaviour:
   speed: 10
   turnSpeed: 250
   gravity: 20
-  jumpSpeed: 15
+  jumpSpeed: 12
   jumpKeyCode: 32
   keyRun: 304
   speedRun: 1.5
