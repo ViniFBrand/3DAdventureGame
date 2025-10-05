@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GunShootAngle : GunShootLimit
 {
+
     public int amountPerShoot = 4;
     public float angle = 15f;
 
