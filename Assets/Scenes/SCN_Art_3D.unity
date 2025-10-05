@@ -7022,7 +7022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354413357}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24446768, y: -0.000000018653607, z: 0.0000000047029025, w: 0.9696575}
+  m_LocalRotation: {x: 0.24446768, y: 0.000000018653607, z: -0.0000000047029025, w: 0.9696575}
   m_LocalPosition: {x: 404.23, y: 0.72999954, z: 40.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8194,7 +8194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500100153}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24446768, y: -0.000000018653607, z: 0.0000000047029025, w: 0.9696575}
+  m_LocalRotation: {x: 0.24446768, y: 0.000000018653607, z: -0.0000000047029025, w: 0.9696575}
   m_LocalPosition: {x: 404.23, y: 0.72999954, z: 40.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10724,7 +10724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee23fadf17315024a9366b2d51fbade7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunBase: {fileID: 7584832237155048336, guid: 7c1df5b2f670c9e448eb585349c0d803, type: 3}
+  gunBase:
+  - {fileID: 3283409218655928146, guid: da7da3483deed0f4da49d5f449e26811, type: 3}
+  - {fileID: 7584832237155048336, guid: 7c1df5b2f670c9e448eb585349c0d803, type: 3}
   gunPosition: {fileID: 51503471}
 --- !u!1001 &1889132732
 PrefabInstance:
