@@ -23,7 +23,7 @@ public class GunShootLimit : GunBase
     {
         if(_recharging) yield break;
 
-        while (true)
+        while (!_recharging)
         {
             if(_currentShoots < maxShoot)
             {
