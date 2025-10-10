@@ -28,6 +28,7 @@ namespace Enemy
             }
 
             transform.position = Vector3.MoveTowards(transform.position, waypoints[_index].transform.position, Time.deltaTime * speed);
+            transform.LookAt(waypoints[_index].transform.position);
         }
     }
 
