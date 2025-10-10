@@ -76,15 +76,6 @@ namespace Enemy
         }
         #endregion
 
-        //debug
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                OnDamage(5f);
-            }
-        }
-
         public void Damage(float damage)
         {
             Debug.Log("Damage");

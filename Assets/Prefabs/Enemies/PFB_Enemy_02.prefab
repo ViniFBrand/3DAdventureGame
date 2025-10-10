@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729133331792239003}
-  - component: {fileID: 1733066964612106149}
   - component: {fileID: 3663540064222108359}
-  - component: {fileID: 4943474251073801978}
+  - component: {fileID: 4085962476094600286}
+  - component: {fileID: 6442266909937847909}
   m_Layer: 0
   m_Name: PFB_Enemy_02
   m_TagString: Untagged
@@ -35,27 +35,6 @@ Transform:
   - {fileID: 2232830068547775141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1733066964612106149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3334213120685396140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaf4b79a71004c642b5cae20252f0f71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collider: {fileID: 3663540064222108359}
-  flashColor: {fileID: 7216353201389043624}
-  particleSystem: {fileID: 1339209082617359012}
-  startLife: 20
-  _currentLife: 0
-  _animationBase: {fileID: 4943474251073801978}
-  startAnimationDuration: 0.2
-  startAnimationEase: 27
-  startWithBornAnimation: 1
 --- !u!65 &3663540064222108359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77,7 +56,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.212006, y: 6.716712, z: 7.0697556}
   m_Center: {x: 0.14561462, y: 3.683745, z: 0.32751846}
---- !u!114 &4943474251073801978
+--- !u!114 &4085962476094600286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334213120685396140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beffbef4874814a41a901e1cb5cc6abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 3663540064222108359}
+  flashColor: {fileID: 7216353201389043624}
+  particleSystem: {fileID: 1339209082617359012}
+  startLife: 10
+  _currentLife: 0
+  _animationBase: {fileID: 6442266909937847909}
+  startAnimationDuration: 0.2
+  startAnimationEase: 27
+  startWithBornAnimation: 1
+  waypoints: []
+  minDistance: 1
+  speed: 1
+--- !u!114 &6442266909937847909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
