@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5564169711220392018}
   - component: {fileID: 4563972744314407164}
   m_Layer: 0
-  m_Name: Enemy_01
+  m_Name: PFB_Enemy_01
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -253,15 +253,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6700134
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.25
+      value: 5.01
       objectReference: {fileID: 0}
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.489998
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalRotation.w
