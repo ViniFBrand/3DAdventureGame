@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     public Animator animator;
 
@@ -79,4 +79,20 @@ public class Player : MonoBehaviour
             animator.SetBool("run", false);
         }*/
     }
+    
+    [Header("Flash")]
+    public List<FlashColor> flashColors;
+
+    #region LIFE
+    public void Damage(float damage)
+    {
+        flashColors.ForEach(i => i.Flash());
+    }
+
+    public void Damage(float damage, Vector3 dir)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    #endregion
 }

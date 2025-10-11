@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2120122464095457947}
   - component: {fileID: 5564169711220392018}
   - component: {fileID: 4563972744314407164}
+  - component: {fileID: 654286112087753579}
   m_Layer: 0
   m_Name: PFB_Enemy_01
   m_TagString: Untagged
@@ -108,7 +109,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.212006, y: 6.716712, z: 7.0697556}
+  m_Size: {x: 5.88, y: 6.716712, z: 4.96}
   m_Center: {x: 0.14561462, y: 3.683745, z: 0.32751846}
 --- !u!114 &4563972744314407164
 MonoBehaviour:
@@ -132,6 +133,33 @@ MonoBehaviour:
     trigger: Attack
   - animationType: 4
     trigger: Death
+--- !u!54 &654286112087753579
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070073006157673695}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &4163468613720583673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 6425993569395479147}
+  skinnedMeshRenderer: {fileID: 0}
   color: {r: 1, g: 0, b: 0, a: 1}
   duration: 0.1
 --- !u!4 &5289086088388602116 stripped
@@ -253,15 +282,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.01
+      value: 4.08
       objectReference: {fileID: 0}
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.27
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 721949065652600332, guid: db11ed36b3bc25c4fb2c76b0daf6f5fe, type: 3}
       propertyPath: m_LocalRotation.w

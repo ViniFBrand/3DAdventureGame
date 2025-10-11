@@ -89,5 +89,15 @@ namespace Enemy
             OnDamage(damage);
             transform.DOMove(transform.position - dir, .1f);
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Player p = collision.transform.GetComponent<Player>();
+
+            if (p != null)
+            {
+                p.Damage(1);
+            }
+        }
     }
 }
