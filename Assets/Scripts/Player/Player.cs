@@ -91,7 +91,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage(float damage, Vector3 dir)
     {
-        throw new System.NotImplementedException();
+        Damage(damage);
     }
 
     #endregion
