@@ -3835,10 +3835,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1752606059432536582, guid: 52b418bc71bc3ee41912253c8bb6e87f, type: 3}
-      propertyPath: timeBetweenShoot
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3732922731059912612, guid: 52b418bc71bc3ee41912253c8bb6e87f, type: 3}
       propertyPath: m_Name
       value: PFB_EnemyGun_01
@@ -5902,14 +5898,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962219733}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8615230629482899433}
   m_Father: {fileID: 1134619662}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &968612694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6493,6 +6489,7 @@ GameObject:
   - component: {fileID: 1134619662}
   - component: {fileID: 1134619661}
   - component: {fileID: 1134619663}
+  - component: {fileID: 1134619664}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -6514,13 +6511,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startAnimationDuration: 0.5
   startAnimationEase: 27
+  bossGraphics: {fileID: 962219733}
   attackAmount: 5
   timeBetweenAttacks: 0.5
+  tagToComparePlayer: Player
+  bossStarted: 0
   speed: 5
   waypoints:
   - {fileID: 331713188}
   - {fileID: 156831244}
   - {fileID: 755993827}
+  waypointsRandom: 0
   healthBase: {fileID: 1134619663}
 --- !u!4 &1134619662
 Transform:
@@ -6551,9 +6552,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af09c95d732bae94aa8cc2a3f34102a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLife: 10
+  startLife: 30
   destroyOnKill: 0
   _currentLife: 0
+--- !u!135 &1134619664
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134619660}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 15.22
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1147327385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20261,6 +20283,7 @@ GameObject:
   - component: {fileID: 6348447873570562095}
   - component: {fileID: 3061229953554753665}
   - component: {fileID: 2033846558322074390}
+  - component: {fileID: 8588400341301417124}
   m_Layer: 0
   m_Name: Enemy_03
   m_TagString: Enemy
@@ -20285,12 +20308,36 @@ MonoBehaviour:
   particleSystem: {fileID: 4150632561881749430}
   startLife: 10
   lookAtPlayer: 1
+  tagToComparePlayer: Player
+  enemyStarted: 0
   _currentLife: 0
   _animationBase: {fileID: 3061229953554753665}
+  enemyGraphics: {fileID: 5346357678415539276}
   startAnimationDuration: 0.2
   startAnimationEase: 27
   startWithBornAnimation: 1
   gunBase: {fileID: 972718468}
+--- !u!135 &8588400341301417124
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8588400341301417122}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 13
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8615230629482899433
 Transform:
   m_ObjectHideFlags: 0
@@ -20374,6 +20421,10 @@ PrefabInstance:
     - target: {fileID: 2203496408432234922, guid: ac71d25eb6e6f91459430f00f945a3dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213146223640278321, guid: ac71d25eb6e6f91459430f00f945a3dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7070073006157673695, guid: ac71d25eb6e6f91459430f00f945a3dd, type: 3}
       propertyPath: m_Name

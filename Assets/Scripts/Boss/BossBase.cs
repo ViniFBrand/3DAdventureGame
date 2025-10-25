@@ -1,9 +1,11 @@
+using DG.Tweening;
+using Ebac.StateMachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
-using Ebac.StateMachine;
-using DG.Tweening;
 
 namespace Boss
 {
@@ -21,22 +23,32 @@ namespace Boss
         [Header("Animation")]
         public float startAnimationDuration = .5f;
         public Ease startAnimationEase = Ease.OutBack;
+        public GameObject bossGraphics;
 
         [Header("Attack")]
         public int attackAmount = 5;
         public float timeBetweenAttacks = .5f;
 
+        [Header("Trigger")]
+        public String tagToComparePlayer = "Player";
+        public bool bossStarted = false;
+
         public float speed = 5f;
         public List<Transform> waypoints;
+        public int waypointsRandom;
 
         public HealthBase healthBase;
 
         private StateMachine<BossAction> stateMachine;
+        private Player _player;
 
         private void Awake()
         {
             Init();
             healthBase.OnKill += OnBossKill;
+            bossGraphics.SetActive(false);
+            _player = GameObject.FindObjectOfType<Player>();
+            waypointsRandom = UnityEngine.Random.Range(0, waypoints.Count);
         }
 
         private void Init()
@@ -77,7 +89,7 @@ namespace Boss
         #region WALK
         public void GoToRandomPoint(Action onArrive = null)
         {
-            StartCoroutine(GoToPointCoroutine(waypoints[UnityEngine.Random.Range(0, waypoints.Count)], onArrive));
+            StartCoroutine(GoToPointCoroutine(waypoints[waypointsRandom], onArrive));
         }
 
         IEnumerator GoToPointCoroutine(Transform t, Action onArrive = null)
@@ -124,6 +136,39 @@ namespace Boss
             stateMachine.SwitchState(state, this);
         }
 
+        #endregion
+
+
+        IEnumerator StartBoss()
+        {
+            bossGraphics.SetActive(true);
+            SwitchState(BossAction.INIT);
+            yield return new WaitForSeconds(1.5f);
+            SwitchState(BossAction.WALK);
+        }
+
+        #region TRIGGER
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.tag == tagToComparePlayer && !bossStarted)
+            {
+                StartCoroutine(StartBoss());
+                bossStarted = true;
+            }
+            if(other.tag == tagToComparePlayer)
+            {
+                transform.LookAt(_player.transform.position);
+            }
+
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == tagToComparePlayer)
+            {
+                transform.LookAt(waypoints[waypointsRandom].transform.position);
+            }
+        }
         #endregion
 
     }

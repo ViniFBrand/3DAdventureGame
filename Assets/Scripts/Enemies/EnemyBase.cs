@@ -1,8 +1,10 @@
+using Animation;
+using Boss;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Animation;
 
 namespace Enemy
 {
@@ -15,11 +17,15 @@ namespace Enemy
         public float startLife = 10f;
         public bool lookAtPlayer = false;
 
-         
+        [Header("Trigger")]
+        public String tagToComparePlayer = "Player";
+        public bool enemyStarted = false;
+
         [SerializeField] private float _currentLife;
 
         [Header("Animation")]
         [SerializeField] private AnimationBase _animationBase;
+        public GameObject enemyGraphics;
 
         [Header("Start Animation")]
         public float startAnimationDuration = .2f;
@@ -31,6 +37,7 @@ namespace Enemy
         private void Awake()
         {
             Init();
+            enemyGraphics.SetActive(false);
         }
 
         private void Start()
@@ -116,5 +123,27 @@ namespace Enemy
                 transform.LookAt(_player.transform.position);
             }
         }
+
+
+        IEnumerator StartEnemy()
+        {
+            enemyGraphics.SetActive(true);
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        #region TRIGGER
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == tagToComparePlayer && !enemyStarted)
+            {
+                StartCoroutine(StartEnemy());
+                enemyStarted = true;
+            }
+            if (other.tag == tagToComparePlayer)
+            {
+                transform.LookAt(_player.transform.position);
+            }
+        }
+        #endregion
     }
 }
