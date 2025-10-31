@@ -12,7 +12,16 @@ public class GunBase : MonoBehaviour
     public KeyCode shootKey = KeyCode.Q;
 
     private Coroutine _currentCoroutine;
+    private bool _isShooting = false;
 
+
+    private void OnEnable()
+    {
+        if (_isShooting)
+        {
+            StartShoot();
+        }
+    }
 
     protected virtual IEnumerator ShootCoroutine()
     {
@@ -38,11 +47,13 @@ public class GunBase : MonoBehaviour
     {
         StopShoot();
         _currentCoroutine = StartCoroutine(ShootCoroutine());
+        _isShooting = true;
     }
 
     public void StopShoot()
     {
         if (_currentCoroutine != null)
             StopCoroutine(_currentCoroutine);
+        _isShooting = false;
     }
 }

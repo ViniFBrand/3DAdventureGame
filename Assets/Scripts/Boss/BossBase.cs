@@ -48,7 +48,6 @@ namespace Boss
             healthBase.OnKill += OnBossKill;
             bossGraphics.SetActive(false);
             _player = GameObject.FindObjectOfType<Player>();
-            waypointsRandom = UnityEngine.Random.Range(0, waypoints.Count);
         }
 
         private void Init()
@@ -89,6 +88,7 @@ namespace Boss
         #region WALK
         public void GoToRandomPoint(Action onArrive = null)
         {
+            waypointsRandom = UnityEngine.Random.Range(0, waypoints.Count);
             StartCoroutine(GoToPointCoroutine(waypoints[waypointsRandom], onArrive));
         }
 
