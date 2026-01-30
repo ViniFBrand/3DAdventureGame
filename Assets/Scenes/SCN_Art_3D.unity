@@ -11942,6 +11942,7 @@ GameObject:
   - component: {fileID: 1885524014}
   - component: {fileID: 1885524015}
   - component: {fileID: 1885524016}
+  - component: {fileID: 1885524017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11996,10 +11997,11 @@ MonoBehaviour:
   jumpKeyCode: 32
   keyRun: 304
   speedRun: 1.5
-  rb: {fileID: 0}
   flashColors:
   - {fileID: 75177564}
   - {fileID: 115671975}
+  healthBase: {fileID: 1885524017}
+  rb: {fileID: 0}
 --- !u!4 &1885524013
 Transform:
   m_ObjectHideFlags: 0
@@ -12082,6 +12084,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &1885524017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885524010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af09c95d732bae94aa8cc2a3f34102a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLife: 10
+  destroyOnKill: 0
+  _currentLife: 0
 --- !u!1001 &1889132732
 PrefabInstance:
   m_ObjectHideFlags: 0
