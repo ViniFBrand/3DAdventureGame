@@ -11988,6 +11988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0e8b79b337bd64dad939bc062409d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliders:
+  - {fileID: 1885524011}
+  - {fileID: 1885524015}
   animator: {fileID: 1755247081}
   characterController: {fileID: 1885524011}
   speed: 10
@@ -12001,7 +12004,7 @@ MonoBehaviour:
   - {fileID: 75177564}
   - {fileID: 115671975}
   healthBase: {fileID: 1885524017}
-  rb: {fileID: 0}
+  rb: {fileID: 1885524016}
 --- !u!4 &1885524013
 Transform:
   m_ObjectHideFlags: 0

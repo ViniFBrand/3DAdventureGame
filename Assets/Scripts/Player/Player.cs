@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour//, IDamageable
 {
+    public List<Collider> colliders;
     public Animator animator;
 
+    [Header("Movement")]
     public CharacterController characterController;
     public float speed = 1f;
     public float turnSpeed = 1f;
     public float gravity = -9.8f;
     public float jumpSpeed = 15f;
 
-    private float vSpeed = 0f;
+    private float _vSpeed = 0f;
 
     public KeyCode jumpKeyCode = KeyCode.Space;
 
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour//, IDamageable
     public List<FlashColor> flashColors;
 
     public HealthBase healthBase;
+
+    private bool _alive = true;
 
     #region EXERCISE MODULO 28 
     public Rigidbody rb;
@@ -47,27 +51,31 @@ public class Player : MonoBehaviour//, IDamageable
         OnValidate();
 
         healthBase.OnDamage += Damage;
+        healthBase.OnDamage += OnKill;
     }
     void Update()
     {
     //Player Movement
-        transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+        if(_alive)
+            transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+        else
+            transform.Rotate(0,0,0);
 
         var inputAxisVertical = Input.GetAxis("Vertical");
         var speedVector = transform.forward * inputAxisVertical * speed;
 
         if (characterController.isGrounded)
         {
-            vSpeed = 0f;
+            _vSpeed = 0f;
             if (Input.GetKeyDown(jumpKeyCode))
             {
-                vSpeed = jumpSpeed;
+                _vSpeed = jumpSpeed;
             }
         }
 
 
-        vSpeed -= gravity * Time.deltaTime;
-        speedVector.y = vSpeed;
+        _vSpeed -= gravity * Time.deltaTime;
+        speedVector.y = _vSpeed;
 
         var isWalking = inputAxisVertical != 0;
         if (isWalking)
@@ -99,6 +107,17 @@ public class Player : MonoBehaviour//, IDamageable
     
 
     #region LIFE
+    private void OnKill(HealthBase h)
+    {
+        if (_alive)
+        {
+            _alive = false;
+            animator.SetTrigger("death");
+            characterController.enabled = false;
+            colliders.ForEach(i => i.enabled = false);
+        }
+    }
+    
     public void Damage(HealthBase h)
     {
         flashColors.ForEach(i => i.Flash());
