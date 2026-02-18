@@ -45,7 +45,8 @@ namespace Boss
         private void Awake()
         {
             Init();
-            healthBase.OnKill += OnBossKill;
+            if (healthBase !=null ) 
+                healthBase.OnKill += OnBossKill;
             bossGraphics.SetActive(false);
             _player = GameObject.FindObjectOfType<Player>();
         }
