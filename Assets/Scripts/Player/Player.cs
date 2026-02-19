@@ -58,15 +58,17 @@ public class Player : MonoBehaviour//, IDamageable
     }
     void Update()
     {
-    //Player Movement
+        //Checks if Player is alive to turn on or off their rotation
         if(_alive)
             transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
         else
             transform.Rotate(0,0,0);
 
+        //Player Movement
         var inputAxisVertical = Input.GetAxis("Vertical");
         var speedVector = transform.forward * inputAxisVertical * speed;
 
+        //Jump Mechanic
         if (characterController.isGrounded)
         {
             _vSpeed = 0f;
@@ -76,10 +78,11 @@ public class Player : MonoBehaviour//, IDamageable
             }
         }
 
-
+        //Application of gravity to Player
         _vSpeed -= gravity * Time.deltaTime;
         speedVector.y = _vSpeed;
 
+        //Run Mechanic
         var isWalking = inputAxisVertical != 0;
         if (isWalking)
         {
@@ -116,10 +119,25 @@ public class Player : MonoBehaviour//, IDamageable
         {
             _alive = false;
             animator.SetTrigger("death");
-            characterController.enabled = false;
+            //Turn off Player movement and colliders on kill
+            characterController.enabled = false; 
             colliders.ForEach(i => i.enabled = false);
+
+            Invoke(nameof(Revive), 3f);
         }
     }
+
+    private void Revive()
+    {
+        _alive = true;
+        healthBase.ResetLife();
+        animator.SetTrigger("revive");
+        Respawn();
+        //Turn on Player movement and colliders on revive
+        characterController.enabled = true; 
+        colliders.ForEach(i => i.enabled = true);
+    }
+    
     
     public void Damage(HealthBase h)
     {
@@ -132,4 +150,13 @@ public class Player : MonoBehaviour//, IDamageable
     }
 
     #endregion
+
+    [NaughtyAttributes.Button]
+    public void Respawn()
+    {
+        if(CheckpointManager.Instance.HasCheckpoint())
+        {
+            transform.position = CheckpointManager.Instance.GetPositionFromLastCheckpoint();
+        }
+    }
 }
