@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CheckpointBase : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
+
     public int key = 01;
 
     private bool _checkpointActived = false;
@@ -44,6 +46,8 @@ public class CheckpointBase : MonoBehaviour
         CheckpointManager.Instance.SaveCheckpoint(key);
 
         _checkpointActived = true;
+        
+
     }
 
 }
