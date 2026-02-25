@@ -61,7 +61,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         Damage(damage);
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if(uiHealthUpdater != null)
         {

@@ -133,6 +133,7 @@ public class Player : MonoBehaviour//, IDamageable
         healthBase.ResetLife();
         animator.SetTrigger("revive");
         Respawn();
+        healthBase.UpdateUI();
         //Turn on Player movement and colliders on revive
         characterController.enabled = true; 
         colliders.ForEach(i => i.enabled = true);
