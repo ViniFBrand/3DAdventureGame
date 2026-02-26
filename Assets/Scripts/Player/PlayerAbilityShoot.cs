@@ -10,6 +10,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     public Transform gunPosition;
 
     private GunBase _currentGun;
+
     protected override void Init()
     {
         base.Init();
@@ -20,6 +21,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
         inputs.Gameplay.Shoot.canceled += ctx => CancelShoot();
 
         inputs.Gameplay.ChangeGun.performed += ctx => ChangeGun(ctx);
+
     }
 
 
@@ -54,11 +56,11 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     private void StartShoot()
     {
         _currentGun.StartShoot();
-        Debug.Log("Start Shoot");
+        //Debug.Log("Start Shoot");
     }
     private void CancelShoot()
     {
-        Debug.Log("Cancel Shoot");
+        //Debug.Log("Cancel Shoot");
         _currentGun.StopShoot();
     }
 }

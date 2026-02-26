@@ -18,6 +18,8 @@ public class Player : MonoBehaviour//, IDamageable
 
     public KeyCode jumpKeyCode = KeyCode.Space;
 
+    public PlayerAbilityShoot playerAbilityShoot;
+
     [Header("Run Setup")]
     public KeyCode keyRun = KeyCode.LeftShift;
     public float speedRun = 1.5f;
@@ -27,9 +29,6 @@ public class Player : MonoBehaviour//, IDamageable
 
     [Header("Life")]
     public HealthBase healthBase;
-
-
-
     private bool _alive = true;
 
     #region EXERCISE MODULO 28 
@@ -47,6 +46,7 @@ public class Player : MonoBehaviour//, IDamageable
     private void OnValidate()
     {
         if (healthBase == null) healthBase = GetComponent<HealthBase>();
+        if(playerAbilityShoot == null) playerAbilityShoot = GetComponent<PlayerAbilityShoot>();
     }
 
     private void Awake()
@@ -122,6 +122,7 @@ public class Player : MonoBehaviour//, IDamageable
             //Turn off Player movement and colliders on kill
             characterController.enabled = false; 
             colliders.ForEach(i => i.enabled = false);
+            playerAbilityShoot.enabled = false;
 
             Invoke(nameof(Revive), 3f);
         }
@@ -137,6 +138,7 @@ public class Player : MonoBehaviour//, IDamageable
         //Turn on Player movement and colliders on revive
         characterController.enabled = true; 
         colliders.ForEach(i => i.enabled = true);
+        playerAbilityShoot.enabled = true;
     }
     
     
