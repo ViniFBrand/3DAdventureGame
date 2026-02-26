@@ -9,6 +9,7 @@ public class EffectsManager : Singleton<EffectsManager>
     [SerializeField] private Vignette _vignette;
 
     public float duration = 1f;
+    public float intensity = .5f;
 
 
     [NaughtyAttributes.Button]
@@ -25,6 +26,8 @@ public class EffectsManager : Singleton<EffectsManager>
         {
             _vignette = tmp;
         }
+
+        _vignette.intensity.value = intensity;
 
         ColorParameter c = new ColorParameter();
 
@@ -49,6 +52,8 @@ public class EffectsManager : Singleton<EffectsManager>
 
             yield return new WaitForEndOfFrame();
         }
+
+        _vignette.intensity.value = 0;
 
 
     }

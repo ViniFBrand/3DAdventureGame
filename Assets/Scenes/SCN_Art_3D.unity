@@ -2423,6 +2423,7 @@ MonoBehaviour:
   processVolume: {fileID: 1498676531}
   _vignette: {fileID: 0}
   duration: 0.2
+  intensity: 0.5
 --- !u!4 &418905082
 Transform:
   m_ObjectHideFlags: 0
@@ -12745,6 +12746,7 @@ MonoBehaviour:
   gravity: 20
   jumpSpeed: 12
   jumpKeyCode: 32
+  playerAbilityShoot: {fileID: 1885524014}
   keyRun: 304
   speedRun: 1.5
   flashColors:
