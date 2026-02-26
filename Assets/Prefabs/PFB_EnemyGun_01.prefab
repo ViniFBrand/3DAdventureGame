@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabProjectiles: {fileID: 8547892338813982802, guid: 8247dd1d1eec40f4aa3109a8d1af54d2, type: 3}
   positionToShoot: {fileID: 7166802542398616258}
-  timeBetweenShoot: 2
+  timeBetweenShoot: 2.3
   speed: 50
   shootKey: 113
 --- !u!1 &8010492685442103561

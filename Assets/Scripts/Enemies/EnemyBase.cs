@@ -36,8 +36,8 @@ namespace Enemy
 
         private void Awake()
         {
-            Init();
             enemyGraphics.SetActive(false);
+            Init();
         }
 
         private void Start()
@@ -53,8 +53,6 @@ namespace Enemy
         protected virtual void Init()
         {
             ResetLife();
-            if(startWithBornAnimation)
-                BornAnimation();
         }
 
         protected virtual void Kill() 
@@ -128,6 +126,8 @@ namespace Enemy
         IEnumerator StartEnemy()
         {
             enemyGraphics.SetActive(true);
+            if (startWithBornAnimation)
+                BornAnimation();
             yield return new WaitForSeconds(1.5f);
         }
 

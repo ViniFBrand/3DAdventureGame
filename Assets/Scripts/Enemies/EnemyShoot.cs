@@ -12,8 +12,16 @@ namespace Enemy
         protected override void Init()
         {
             base.Init();
-
+            
             gunBase.StartShoot();
+        }
+
+
+        protected override void Kill()
+        {
+            base.Kill();
+
+            gunBase.StopShoot();
         }
     }
 }
