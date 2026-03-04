@@ -57,6 +57,7 @@ public class GunShootLimit : GunBase
         float time = 0;
         while(time < timeToRecharge)
         {
+            ShakeCamera.Instance.StopShake();
             time += Time.deltaTime;
             Debug.Log("Recharging" + time);
             uIGunUpdaters.ForEach(i => i.UpdateValue(time/timeToRecharge));
