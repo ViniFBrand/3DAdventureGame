@@ -3427,7 +3427,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 511547679}
   shakeTime: 0
-  c: {fileID: 0}
+  amplitude: 1.5
+  frequency: 1.5
+  time: 0.3
 --- !u!1 &511829765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6620591953085071999, guid: 89e20167823a30d459856414377997d1, type: 3}
