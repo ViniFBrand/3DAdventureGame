@@ -18,6 +18,8 @@ public class ShakeCamera : Singleton <ShakeCamera>
     public float time = .3f;
 
 
+ 
+
     [NaughtyAttributes.Button]
     public void Shake()
     {
@@ -26,7 +28,6 @@ public class ShakeCamera : Singleton <ShakeCamera>
 
     public void Shake(float amplitude, float frequency, float time)
     {
-        _c = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _c.m_AmplitudeGain = amplitude;
         _c.m_FrequencyGain = frequency;
 
@@ -47,6 +48,7 @@ public class ShakeCamera : Singleton <ShakeCamera>
         }
         else
         {
+            if(_c == null) _c = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             StopShake();
         }
     }

@@ -37,7 +37,6 @@ namespace Enemy
         private void Awake()
         {
             enemyGraphics.SetActive(false);
-            Init();
         }
 
         private void Start()
@@ -126,6 +125,7 @@ namespace Enemy
         IEnumerator StartEnemy()
         {
             enemyGraphics.SetActive(true);
+            Init();
             if (startWithBornAnimation)
                 BornAnimation();
             yield return new WaitForSeconds(1.5f);
