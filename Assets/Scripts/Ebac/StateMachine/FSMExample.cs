@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ebac.StateMachine;
+using UnityEngine.InputSystem;
 
 
 public class FSMExample : MonoBehaviour
@@ -22,4 +23,5 @@ public class FSMExample : MonoBehaviour
         stateMachine.RegisterStates(ExampleENum.STATE_ONE, new StateBase());
         stateMachine.RegisterStates(ExampleENum.STATE_TWO, new StateBase());
     }
+
 }
