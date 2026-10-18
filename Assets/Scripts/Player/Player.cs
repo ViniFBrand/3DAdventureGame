@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ebac.Core.Sigleton;
 
-public class Player : MonoBehaviour//, IDamageable
+public class Player : Singleton<Player> //, IDamageable
 {
     public List<Collider> colliders;
     public Animator animator;
@@ -49,13 +50,17 @@ public class Player : MonoBehaviour//, IDamageable
         if(playerAbilityShoot == null) playerAbilityShoot = GetComponent<PlayerAbilityShoot>();
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         OnValidate();
 
         healthBase.OnDamage += Damage;
         healthBase.OnKill += OnKill;
     }
+
+   
     void Update()
     {
         //Checks if Player is alive to turn on or off their rotation
@@ -127,6 +132,7 @@ public class Player : MonoBehaviour//, IDamageable
             Invoke(nameof(Revive), 3f);
         }
     }
+
 
     private void Revive()
     {
